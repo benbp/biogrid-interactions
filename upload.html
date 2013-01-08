@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Biogrid analyzer</title>
+	<script type="text/javascript">
+		counter = 1
+		function add_file(div){
+			counter++;
+			var newFile = document.createElement('div');
+			newFile.innerHTML = "<h4>File" + counter + "</h4>Name of protein: <input type='text' id='proteinName" + counter + "' name='proteinNames[]' /><br />File: <input type='file' name='uploads[]' /><br />"
+			document.getElementById(div).appendChild(newFile);
+		}
+		
+		function loadingScreen(){
+			document.write("<h1>FINDING INTERACTIONS (do NOT refresh page)...</h1>")
+		}
+	</script>
+</head>
+<body>
+	<b>This is a web app for calculating intermediate interactors shared between proteins in the Biogrid database</b><br />
+	<i>by Ben Broderick Phillips</i>
+	<p>To start, upload two or more .tab2 files downloaded from <a href="http://thebiogrid.org/">Biogrid</a>. Make sure to type in the correct protein name that each file corresponds
+		to (e.g. HSP82), otherwise the app will not work, or you will get inaccurate results. When you've uploaded all the files, click "Find common interactions" to get your results. Depending on how many files you
+		have uploaded, and how large they are, it may take some time. Be patient, and do good science.</p>
+	
+	<form action="upload.php" method="POST" enctype="multipart/form-data">
+		<div id="uploadForms">
+			<div id="files">
+				<h4>File 1</h4>
+				Name of protein: <input type="text" id="proteinName1" name="proteinNames[]" /><br />
+				File: <input type="file" name="uploads[]" /><br />
+			</div>
+		</div>
+		<input type="button" onClick="add_file('uploadForms');" value="Add another file" />
+		<input type="submit" onClick="loadingScreen();" value="Find common interactions" />
+	</form>
+</body>
+</html>

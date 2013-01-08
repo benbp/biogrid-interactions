@@ -1,0 +1,13 @@
+        Table "public.interactors"
+  Column  |       Type        | Modifiers 
+----------+-------------------+-----------
+ sid      | character varying | 
+ refpid   | character varying | 
+ refp     | character varying | 
+ intpid   | character varying | 
+ intp     | character varying | 
+ intosi   | character varying | 
+ pubmedid | character varying | 
+ filenum  | integer           | 
+Indexes:
+    "btree" btree (sid, filenum)
